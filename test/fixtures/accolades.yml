@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  accolade_category_id: 1
+  description: MyText
+  title: MyString
+  additional_info: MyString
+  link_address: MyString
+  published: false
+
+two:
+  accolade_category_id: 1
+  description: MyText
+  title: MyString
+  additional_info: MyString
+  link_address: MyString
+  published: false

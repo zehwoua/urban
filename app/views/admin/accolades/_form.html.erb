@@ -1,0 +1,118 @@
+<%= simple_form_for([:admin,@accolade]) do |f| %>
+<div class="row">
+  <div class="col-lg-8 col-md-8 col-sm-7">
+    <div class="widget">
+        
+      <%= render 'admin/admin_widgethead',:widgethead_title => 'Create Accolade' %>
+
+      <div class="widget-content">
+        <div class="padd">
+          <div class="container-c">
+            <% if @accolade.errors.any? %>
+              <div id="error_explanation">
+                <h5 class="text-danger"><%= pluralize(@accolade.errors.count, "error") %> prohibited this accolade from being saved:</h5>
+
+                <ul>
+                <% @accolade.errors.full_messages.each do |msg| %>
+                  <li class="text-danger"><%= msg %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <%= f.input :title %>
+            <%= f.input :additional_info %>
+            <%= f.input :link_address %>
+
+          </div><!--/container-c-->
+        </div><!--/padd-->
+      </div><!--/widget-content-->
+    </div><!--/widget-->
+    <div class="widget">
+        
+      <%= render 'admin/admin_widgethead',:widgethead_title => 'Intro' %>
+
+      <div class="widget-content">
+        <div class="padd">
+          <div class="container-c">
+
+            <%= f.input :description, :input_html => { :class => "cleditor"} %>
+
+          </div><!--/container-c-->
+        </div><!--/padd-->
+      </div><!--/widget-content-->
+    </div><!--/widget-->
+    
+  </div><!--/col-lg-9-->
+  <div class="col-lg-4 col-md-4 col-sm-5">
+
+    <div class="widget">
+        
+      <%= render 'admin/admin_widgethead',:widgethead_title => 'Categories' %>
+
+      <div class="widget-content">
+        <div class="padd">
+          <div class="container-c">
+
+            <% if !@accolade.new_record? %>
+                <h5><b>Status : </b><%= @accolade.published ? raw("<span class='text-success'>Published</span>") : raw("<span class='text-warning'>Draft Saved</span>") %></h5>
+                <hr/>
+              <% end %>
+            
+            <div id="accolade_category_section" class="clearfix">
+              <%= (AccoladeCategory.count != 0) ? raw("#{f.association :accolade_category, as: :radio_buttons}") : raw("<div class='input string required accolade_accolade_category text-danger'><label class='string required control-label' for='portfolio_accolade_category'><abbr title='required'>*</abbr> Accolade Category</label><p style='line-height: 40px;' id='no_pc_text'>Create new</p></div>") %>
+              <%=  %>
+              <%= link_to raw("<span class='icon-plus'></span> Add New Category"), new_admin_accolade_category_path ,:class =>"btn btn-default btn-xs btn-block", :remote => true %>
+                
+            </div><!--/accolade_category_section-->
+            <br/>
+            <hr/>
+            <% if @accolade.new_record? || @accolade.published == 0 || !@accolade.published.present? %>
+              <%= f.button :submit, "Save Draft", :class =>"btn btn-default" %>
+              <%= f.button :submit, "Publish", :class =>"btn btn-success", :name => "published" %>
+            <% else %>
+              <%= f.button :submit, "Update", :class =>"btn btn-success", :name => "published" %>
+            <% end %>
+            <% if !@accolade.new_record? %>
+              <%= link_to raw('Trash'), admin_accolade_path(@accolade), :method => :delete, :data =>'Are you sure you want to delete?', :class => "btn btn-danger" %>
+            <% else %>
+              <%= link_to "Trash", "", :class =>"btn btn-danger disabled" %>
+            <% end %>
+
+          </div><!--/container-c-->
+        </div><!--/padd-->
+      </div><!--/widget-content-->
+    </div><!--/widget-->
+
+    <div class="widget">
+        
+      <%= render 'admin/admin_widgethead',:widgethead_title => 'Image' %>
+
+      <div class="widget-content">
+        <div class="padd">
+          <div class="container-c">
+
+            <div class="fileinput fileinput-new" data-provides="fileinput">
+              <div class="fileinput-new thumbnail" style="width: 100%; height: auto;">
+                
+                <% if @accolade.image.url present? %>
+                  <%= image_tag @accolade.image_url.to_s %>
+                <% else %>
+                  <!-- <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" /> -->
+                  <img data-src="holder.js/100%x100%" alt="100%x100%" src="data:image/png;base64,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" style="height: 100%; width: 100%; display: block;">
+                <% end %>
+              </div>
+              <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 100%;"></div>
+              <div>
+                <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><%= f.file_field :image %></span>
+                <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">Remove</a>
+              </div>
+            </div>
+
+          </div><!--/container-c-->
+        </div><!--/padd-->
+      </div><!--/widget-content-->
+    </div><!--/widget-->
+
+  </div><!--/col-lg-3-->
+</div><!--/row-->
+<% end %>

@@ -1,0 +1,14 @@
+<%= render 'admin/admin_sidebar' %>
+
+<div class="mainbar">
+	<%= render 'admin/admin_pagehead',:pagehead_title => "New Accolade Category" %>
+
+  <div class="matter">
+  	<div class="container-c">
+      <%= link_to 'Back to Accolade Categories', admin_accolade_categories_path, :class => "btn btn-warning" %>
+
+      <div class="clearfix"></div>
+			<%= render 'form' %>
+		</div><!--/container-c-->
+	</div><!--/matter-->
+</div>

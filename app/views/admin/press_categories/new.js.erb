@@ -1,0 +1,3 @@
+$('body').append("<%=escape_javascript(render ('admin/admin/add_modal') ,:modal_title => 'New Press Category' )%>");
+$('#add_new_item_modal').modal('show');
+$('#modal_add_body').html("<%=escape_javascript(render ('remote_form') )%>");

@@ -1,0 +1,2 @@
+module PressCategoriesHelper
+end

@@ -1,0 +1,17 @@
+<%= render 'admin/admin_sidebar' %>
+
+<div class="mainbar">
+	<%= render 'admin/admin_pagehead',:pagehead_title => "Edit Members : #{@member.name}" %>
+
+  <div class="matter">
+  	<div class="container-c">
+      <%= link_to 'Back to Members', admin_members_path, :class => "btn btn-warning" %>
+      <%= link_to 'New Members', new_admin_member_path, :class => "btn btn-success" %>
+
+      <%= link_to raw('Trash'), admin_member_path(@member), :method => :delete, :data =>'Are you sure you want to delete?', :class => "btn btn-danger pull-right" %>
+
+      <div class="clearfix"></div>
+			<%= render 'form' %>
+		</div><!--/container-c-->
+	</div><!--/matter-->
+</div>

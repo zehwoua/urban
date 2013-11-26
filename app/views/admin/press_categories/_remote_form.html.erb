@@ -1,0 +1,16 @@
+<%= simple_form_for [:admin, @press_category], :remote => true, :authenticity_token => true  do |f| %>
+	<% if @press_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@press_category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+      <% @press_category.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<%= f.input :name %>
+	<%= f.button :submit,"Create Press Category", :class => "btn btn-gray btn-block" %>
+<% end %>

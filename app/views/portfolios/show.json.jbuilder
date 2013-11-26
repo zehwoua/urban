@@ -1,0 +1,1 @@
+json.extract! @portfolio, :project_name, :shorttext, :city, :country, :region, :year, :area, :type_id, :interior, :installation, :research, :blurb, :copy, :img_credits_name, :img_credits_link, :created_at, :updated_at

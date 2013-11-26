@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project_name: MyString
+  shorttext: MyString
+  city: MyString
+  country: MyString
+  region: MyString
+  year: 1
+  area: MyString
+  type_id: 1
+  interior: false
+  installation: false
+  research: false
+  blurb: MyString
+  copy: MyText
+  img_credits_name: MyString
+  img_credits_link: MyString
+
+two:
+  project_name: MyString
+  shorttext: MyString
+  city: MyString
+  country: MyString
+  region: MyString
+  year: 1
+  area: MyString
+  type_id: 1
+  interior: false
+  installation: false
+  research: false
+  blurb: MyString
+  copy: MyText
+  img_credits_name: MyString
+  img_credits_link: MyString

@@ -1,0 +1,15 @@
+<%= render 'admin/admin_sidebar' %>
+
+<div class="mainbar">
+	<%= render 'admin/admin_pagehead',:pagehead_title => "Edit Accolade : #{@accolade.title}" %>
+
+  <div class="matter">
+  	<div class="container-c">
+      <%= link_to 'Back to Accolades', admin_accolades_path, :class => "btn btn-warning" %>
+      <%= link_to 'New Accolade', new_admin_accolade_path, :class => "btn btn-success" %>
+
+      <div class="clearfix"></div>
+			<%= render 'form' %>
+		</div><!--/container-c-->
+	</div><!--/matter-->
+</div>

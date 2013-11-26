@@ -1,0 +1,144 @@
+<%= simple_form_for([:admin,@portfolio]) do |f| %>
+  <div class="row">
+    <div class="col-lg-8 col-md-8">
+      <div class="widget">
+        
+        <%= render 'admin/admin_widgethead',:widgethead_title => 'Create Portfolio' %>
+
+        <div class="widget-content">
+          <div class="padd">
+            <div class="container-c">
+              <% if @portfolio.errors.any? %>
+                <div id="error_explanation">
+                  <h5 class="text-danger"><%= pluralize(@portfolio.errors.count, "error") %> prohibited this portfolio from being saved:</h5>
+
+                  <ul>
+                  <% @portfolio.errors.full_messages.each do |msg| %>
+                    <li class="text-danger"><%= msg %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              <% end %>
+              <%= f.input :project_name %>
+              <%= f.input :shorttext %>
+              <% @year = Time.now.year.to_i %>
+              <%= f.input :year, :collection => (1996..@year)%>
+              <%= f.input :copy, :input_html => { :class => "cleditor"} %>
+              <%= f.input :blurb %>
+
+            </div><!--/container-c-->
+          </div><!--/padd-->
+        </div><!--/widget-content-->
+      </div><!--/widget-->
+
+      <div class="widget">
+
+        <%= render 'admin/admin_widgethead',:widgethead_title => 'Images Details' %>
+
+        <div class="widget-content">
+          <div class="padd">
+            <div class="container-c">
+
+              <%= f.input :img_credits_name %>
+              <%= f.input :img_credits_link %>
+
+            </div><!--/container-c-->
+          </div><!--/padd-->
+        </div><!--/widget-content-->
+      </div><!--/widget-->
+
+      <div class="widget">
+
+        <%= render 'admin/admin_widgethead',:widgethead_title => 'Gallery' %>
+
+        <div class="widget-content">
+          <div class="padd">
+            <div class="container-c">
+              <% @i = 1 %>
+              <%= f.fields_for :portfolio_galleries do |builder| %>
+                <%= render 'portfolio_gallery_fields', :f => builder, :i => @i %>
+                <% @i = @i+1 %>
+              <% end %>
+              <%= link_to_add_fields raw("<i class='icon-plus'></i> Add Image"), f, :portfolio_galleries, @i %>
+
+            </div><!--/container-c-->
+          </div><!--/padd-->
+        </div><!--/widget-content-->
+      </div><!--/widget-->
+
+
+    </div><!--/col-lg-8-->
+    <div class="col-lg-4 col-md-4">
+      <div class="widget">
+
+        <%= render 'admin/admin_widgethead',:widgethead_title => 'Details'%>
+
+        <div class="widget-content">
+          <div class="padd">
+            <div class="container-c">
+              <% if !@portfolio.new_record? %>
+                <h5><b>Status : </b><%= @portfolio.published ? raw("<span class='text-success'>Published</span>") : raw("<span class='text-warning'>Draft Saved</span>") %></h5>
+                <hr/>
+              <% end %>
+              <div id="portfolio_type_section" class="clearfix">
+                <%= (Type.count != 0) ? raw("#{f.association :type, as: :radio_buttons}") : raw("<div class='input string required portfolio_type text-danger'><label class='string required control-label' for='portfolio_type'><abbr title='required'>*</abbr> Portfolio Type</label><p style='line-height: 40px;' id='no_pc_text' >Create new</p></div>") %>
+                <%=  %>
+                <%= link_to raw("<span class='icon-plus'></span> Add New Portfolio Type"), new_admin_type_path ,:class =>"btn btn-default btn-xs btn-block", :remote => true %>
+                  
+              </div><!--/portfolio_type_section-->
+              <br/>
+              <hr/>
+
+              <div class="clearfix">
+                <%= f.input :interior, wrapper_html: { class: 'element clearfix' } %>
+                <%= f.input :installation, wrapper_html: { class: 'element clearfix' } %>
+                <%= f.input :research, wrapper_html: { class: 'element clearfix' } %>
+              </div>
+
+              <hr/>
+
+              <% if @portfolio.new_record? || @portfolio.published == 0 || !@portfolio.published.present? %>
+                <%= f.button :submit, "Save Draft", :class =>"btn btn-default" %>
+                <%= f.button :submit, "Publish", :class =>"btn btn-success", :name => "published" %>
+              <% else %>
+                <%= f.button :submit, "Update", :class =>"btn btn-success", :name => "published" %>
+              <% end %>
+              
+              <% if !@portfolio.new_record? %>
+                <%= link_to raw('Trash'), admin_portfolio_path(@portfolio), :method => :delete, :data =>'Are you sure you want to delete?', :class => "btn btn-danger" %>
+              <% else %>
+                <%= link_to "Trash", "", :class =>"btn btn-danger disabled" %>
+              <% end %>
+              
+
+            </div><!--/container-c-->
+          </div><!--/padd-->
+        </div><!--/widget-content-->
+      </div><!--/widget-->
+
+      <div class="widget">
+
+        <%= render 'admin/admin_widgethead',:widgethead_title => 'Location' %>
+
+        <div class="widget-content">
+          <div class="padd">
+            <div class="container-c">
+              <div class="input select optional portfolio_country">
+                <%= f.label :country %>
+                <%= f.country_select :country %>
+              </div>
+              <div class="input select optional portfolio_region">
+                <%= render partial: 'admin/subregion_select', locals: {parent_region: f.object.country} %>
+
+              </div>
+              <%= f.input :city %>
+              <%= f.input :area %>   
+
+            </div><!--/container-c-->
+          </div><!--/padd-->
+        </div><!--/widget-content-->
+      </div><!--/widget-->
+
+    </div><!--/col-lg-4-->
+  </div><!--/row-->
+<% end %>

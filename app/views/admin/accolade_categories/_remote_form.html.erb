@@ -1,0 +1,16 @@
+<%= simple_form_for [:admin, @accolade_category], :remote => true, :authenticity_token => true  do |f| %>
+	<% if @accolade_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@accolade_category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+      <% @accolade_category.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<%= f.input :name %>
+	<%= f.button :submit,"Create Accolade Category", :class => "btn btn-gray btn-block" %>
+<% end %>

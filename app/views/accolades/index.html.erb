@@ -1,0 +1,37 @@
+<h1>Listing accolades</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Accolade category</th>
+      <th>Description</th>
+      <th>Title</th>
+      <th>Additional info</th>
+      <th>Link address</th>
+      <th>Published</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @accolades.each do |accolade| %>
+      <tr>
+        <td><%= accolade.accolade_category_id %></td>
+        <td><%= accolade.description %></td>
+        <td><%= accolade.title %></td>
+        <td><%= accolade.additional_info %></td>
+        <td><%= accolade.link_address %></td>
+        <td><%= accolade.published %></td>
+        <td><%= link_to 'Show', accolade %></td>
+        <td><%= link_to 'Edit', edit_accolade_path(accolade) %></td>
+        <td><%= link_to 'Destroy', accolade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Accolade', new_accolade_path %>

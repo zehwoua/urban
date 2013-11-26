@@ -1,0 +1,16 @@
+<%= render 'admin/admin_sidebar' %>
+
+<div class="mainbar">
+	<%= render 'admin/admin_pagehead',:pagehead_title => "Edit Portfolio : #{@portfolio.project_name}" %>
+
+  <div class="matter">
+  	<div class="container-c">
+      <%= link_to 'Back to Portfolios', admin_portfolios_path, :class => "btn btn-warning" %>
+      <%= link_to 'New Portfolio', new_admin_portfolio_path, :class => "btn btn-success" %>
+
+      <%= link_to 'Show Portfolio', admin_portfolio_path(@portfolio), :class => "btn btn-default pull-right" %>
+      <div class="clearfix"></div>
+			<%= render 'form' %>
+		</div><!--/container-c-->
+	</div><!--/matter-->
+</div>

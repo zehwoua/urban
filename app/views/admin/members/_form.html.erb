@@ -1,0 +1,117 @@
+<%= simple_form_for([:admin,@member], :html => { :multipart => true }) do |f| %>
+  <div class="row">
+    <div class="col-lg-8 col-md-8 col-sm-8">
+      <div class="widget">
+        
+        <%= render 'admin/admin_widgethead',:widgethead_title => 'Create Member' %>
+
+        <div class="widget-content">
+          <div class="padd">
+            <div class="container-c">
+              <% if @member.errors.any? %>
+                <div id="error_explanation">
+                  <h5 class="text-danger"><%= pluralize(@member.errors.count, "error") %> prohibited this member from being saved:</h5>
+
+                  <ul>
+                  <% @member.errors.full_messages.each do |msg| %>
+                    <li class="text-danger"><%= msg %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              <% end %>
+              
+              <%= f.input :name %>
+              <%= f.input :email %>
+              <%= f.input :education %>
+              
+
+              <div class="input select optional member_country">
+                <%= f.label :country %>
+                <%= f.country_select :country %>
+              </div>
+                 
+                
+              <%= f.input :bio, :input_html => { :class => "cleditor"} %>
+              <hr/>
+              <%= f.button :submit, :class => "btn btn-default" %>
+            </div><!--/container-c-->
+          </div><!--/padd-->
+        </div><!--/widget-content-->
+      </div><!--/widget-->
+    </div><!--/col-lg-8-->
+    <div class="col-lg-4 col-md-4 col-sm-4">
+
+      <div class="widget">     
+        <%= render 'admin/admin_widgethead',:widgethead_title => 'Member Info' %>
+
+        <div class="widget-content">
+          <div class="padd">
+            <div class="container-c">
+              
+              <div id="member_position_section" class="clearfix">
+                <%= (Position.count != 0) ? raw("#{f.association :position, as: :radio_buttons}") : raw("<div class='input string required member_position text-danger'><label class='string required control-label' for='member_position'><abbr title='required'>*</abbr> Position</label><p style='line-height: 40px;' id='no_pc_text'>Create new</p></div>") %>
+                <%=  %>
+                <%= link_to raw("<span class='icon-plus'></span> Add New Position"), new_admin_position_path ,:class =>"btn btn-default btn-xs btn-block", :remote => true %>
+                  
+              </div><!--/member_position_section-->
+
+              <br/>
+              <hr/>
+              <br/>
+
+              <div id="member_office_section" class="clearfix">
+
+                <% if Office.count != 0 %>
+                  <div class='input string required member_office text-danger'>
+                    <label class="string required control-label" for='member_office'><abbr title='required'>*</abbr> Office</label>
+                    <% Office.all.each do |office| %>
+                      <% @country = Carmen::Country.coded(office.country) %>
+                      
+                      <label class="radio"><input class="radio_buttons optional" id="member_office_id_<%= office.id %>" name="member[office_id]" type="radio" value="<%= office.id %>" <%= "#{'checked' if @member.office_id == office.id }"%>><%= "#{@country.name}, #{office.city}" %></label>
+                    <% end %>
+                  </div><!--member_office-->
+                <% else %>
+                  <%= raw("<div class='input string required member_office text-danger'><label class='string required control-label' for='member_office'><abbr title='required'>*</abbr> Member Office </label><p style='line-height: 40px;' id='no_pc_text'>Create new</p></div>") %>
+                <% end %>
+
+                <%= link_to raw("<span class='icon-plus'></span> Add New Office"), new_admin_office_path ,:class =>"btn btn-default btn-xs btn-block" %>
+                <br/>
+              </div><!--/member_office_section-->
+
+            </div><!--/container-c-->
+          </div><!--/padd-->
+        </div><!--/widget-content-->
+      </div><!--/widget member_info-->
+
+      <div class="widget">
+            
+        <%= render 'admin/admin_widgethead',:widgethead_title => 'Member Image' %>
+
+        <div class="widget-content">
+          <div class="padd">
+            <div class="container-c">
+              <div class="fileinput fileinput-new" data-provides="fileinput">
+                <div class="fileinput-new thumbnail" style="width: 100%; height: auto;">
+                  
+                  <% if @member.avatar.url present? %>
+                    <%= image_tag @member.avatar_url.to_s %>
+                  <% else %>
+                    <!-- <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" /> -->
+                    <img data-src="holder.js/100%x100%" alt="...">
+                  <% end %>
+                </div>
+                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 100%;"></div>
+                <div>
+                  <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><%= f.file_field :avatar %></span>
+                  <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">Remove</a>
+                </div>
+              </div>
+
+            </div><!--/container-c-->
+          </div><!--/padd-->
+        </div><!--/widget-content-->
+      </div><!--/widget member_picture-->
+
+    </div><!--/col-lg-4-->
+  </div><!--/row-->
+<% end %>

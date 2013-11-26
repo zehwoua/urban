@@ -1,0 +1,5 @@
+$('#add_new_item_modal').modal('hide').remove();
+if($('#no_pc_text').length != 0){
+	$('#no_pc_text').remove();
+}
+$('.portfolio_type').append('<label class="radio"><input class="radio_buttons optional" id="portfolio_type_id_<%= @type.id %>" name="portfolio[type_id]" type="radio" value="<%= @type.id %>"><%= @type.name %></label>');

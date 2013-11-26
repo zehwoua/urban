@@ -1,0 +1,18 @@
+<div id="region_code_wrapper">
+  <% parent_region ||= params[:parent_region] %>
+ <% unless parent_region.nil? %>
+  <% country = Carmen::Country.coded(parent_region) %>  
+<% end %>
+
+  <% if country.nil? %>
+  	<label class="string optional control-label" for="portfolio_region">Region</label>
+    <p>Please select a country above</p>
+    <br/>
+  <% elsif country.subregions? %>
+  	<label class="string optional control-label" for="portfolio_region">Region</label>
+    <%= subregion_select(:portfolio, :region, parent_region) %>
+  <% else %>
+  	<label class="string optional control-label" for="portfolio_region">Region</label>
+    <%= text_field(:portfolio, :region) %>
+  <% end %>
+</div>

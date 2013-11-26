@@ -1,0 +1,38 @@
+<%= simple_form_for([:admin,@accolade_category]) do |f| %>
+  <div class="widget">
+        
+    <%= render 'admin/admin_widgethead',:widgethead_title => 'Create Accolade Category' %>
+
+    <div class="widget-content">
+      <div class="padd">
+        <div class="container-c">
+          <% if @accolade_category.errors.any? %>
+            <div id="error_explanation">
+              <h5 class="text-danger"><%= pluralize(@accolade_category.errors.count, "error") %> prohibited this category from being saved:</h5>
+
+              <ul>
+              <% @accolade_category.errors.full_messages.each do |msg| %>
+                <li class="text-danger"><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+        	<div class="row clearfix">
+        		<div class="col-lg-6 col-md-6">
+        			<%= f.input :name %>
+        		</div>
+        		<div class="col-lg-6 col-md-6 form-inline-element">
+        			<%= f.button :submit, :class => "btn btn-default" %>
+        			<% if !@accolade_category.new_record? %>
+                <%= link_to raw('Trash'), admin_accolade_category_path(@accolade_category), :method => :delete, :data =>'Are you sure you want to delete?', :class => "btn btn-danger" %>
+              <% else %>
+                <%= link_to "Trash", "", :class =>"btn btn-danger disabled" %>
+              <% end %>
+
+        		</div>
+        	</div>
+        </div><!--/container-c-->
+      </div><!--/padd-->
+    </div><!--/widget-content-->
+  </div><!--/widget-->
+<% end %>

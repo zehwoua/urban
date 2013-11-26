@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Project name:</strong>
+  <%= @portfolio.project_name %>
+</p>
+
+<p>
+  <strong>Shorttext:</strong>
+  <%= @portfolio.shorttext %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @portfolio.city %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @portfolio.country %>
+</p>
+
+<p>
+  <strong>Region:</strong>
+  <%= @portfolio.region %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @portfolio.year %>
+</p>
+
+<p>
+  <strong>Area:</strong>
+  <%= @portfolio.area %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @portfolio.type_id %>
+</p>
+
+<p>
+  <strong>Interior:</strong>
+  <%= @portfolio.interior %>
+</p>
+
+<p>
+  <strong>Installation:</strong>
+  <%= @portfolio.installation %>
+</p>
+
+<p>
+  <strong>Research:</strong>
+  <%= @portfolio.research %>
+</p>
+
+<p>
+  <strong>Blurb:</strong>
+  <%= @portfolio.blurb %>
+</p>
+
+<p>
+  <strong>Copy:</strong>
+  <%= @portfolio.copy %>
+</p>
+
+<p>
+  <strong>Img credits name:</strong>
+  <%= @portfolio.img_credits_name %>
+</p>
+
+<p>
+  <strong>Img credits link:</strong>
+  <%= @portfolio.img_credits_link %>
+</p>
+
+<%= link_to 'Edit', edit_portfolio_path(@portfolio) %> |
+<%= link_to 'Back', portfolios_path %>

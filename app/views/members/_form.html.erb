@@ -1,0 +1,41 @@
+<%= simple_form_for(@member) do |f| %>
+  <% if @member.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@member.errors.count, "error") %> prohibited this member from being saved:</h2>
+
+      <ul>
+      <% @member.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.input :name %>
+  <%= f.input :country_id, as: :country, prompt: "Select the country" %>
+
+  <div class="row">
+    <div class="col-lg-10">
+      <%= f.association :office, prompt: "Select the office" %>
+    </div>
+    <div class="col-lg-2 form-inline-element">
+      <%= link_to "Add Office", new_position_path ,:class =>"btn btn-gray" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-10">
+      <%= f.association :position, prompt: "Select your position" %>
+    </div>
+    <div class="col-lg-2 form-inline-element">
+      <%= link_to "Add Position", new_position_path ,:class =>"btn btn-gray" %>
+    </div>
+  </div>
+
+  <%= f.input :education %>
+  <%= f.input :bio %>
+  <%= f.input :email %>
+  <div class="actions">
+    <%= f.button :submit, :class => "btn btn-lightblue"  %>
+  </div>
+<% end %>

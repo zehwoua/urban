@@ -1,0 +1,14 @@
+<%= render 'admin/admin_sidebar' %>
+
+<div class="mainbar">
+	<%= render 'admin/admin_pagehead',:pagehead_title => "New Portfolio Type" %>
+
+  <div class="matter">
+  	<div class="container-c">
+      <%= link_to 'Back to Types', admin_types_path, :class => "btn btn-warning" %>
+
+      <div class="clearfix"></div>
+			<%= render 'form' %>
+		</div><!--/container-c-->
+	</div><!--/matter-->
+</div>

@@ -1,0 +1,27 @@
+<div class="sidebar">
+  <div class="sidebar-dropdown"><a href="#">Navigation</a></div>
+
+  <!--- Sidebar navigation -->
+  <!-- If the main navigation has sub navigation, then add the class "has_sub" to "li" of main navigation. -->
+  <ul id="nav" style="">
+    <!-- Main menu with font awesome icon -->
+    <li>
+      <%= link_to raw("<i class='icon-home'></i> Dashboard"),admin_root_path %>
+      <!-- Sub menu markup 
+      <ul>
+        <li><a href="#">Submenu #1</a></li>
+        <li><a href="#">Submenu #2</a></li>
+        <li><a href="#">Submenu #3</a></li>
+      </ul>-->
+    </li>
+    <li><%= link_to raw("<i class='icon-file-alt'></i>Portfolios"),admin_portfolios_path %></li>
+    <li><%= link_to raw("<i class='icon-bar-chart'></i>Portfolio Types"),admin_types_path %></li> 
+    <li><%= link_to raw("<i class='icon-user'></i>Members"),admin_members_path %></li>
+    <li><%= link_to raw("<i class='icon-briefcase'></i>Members Positions"),admin_positions_path %></li>
+    <li><%= link_to raw("<i class='icon-map-marker'></i>Offices"),admin_offices_path %></li>
+    <li><%= link_to raw("<i class='icon-map-marker'></i>Press"),admin_presses_path %></li>
+    <li><%= link_to raw("<i class='icon-map-marker'></i>Press Categories"),admin_press_categories_path %></li>
+    <li><%= link_to raw("<i class='icon-map-marker'></i>Accolades"),admin_accolades_path %></li>  
+    <li><%= link_to raw("<i class='icon-map-marker'></i>Accolade Categories"),admin_accolade_categories_path %></li>                           
+  </ul>
+</div>

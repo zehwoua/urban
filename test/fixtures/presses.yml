@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  web: MyText
+  publications: MyText
+  pr: MyText
+  press_category_id: 1
+  title: MyString
+  additional_info: MyString
+  quote: MyText
+  link_address: MyString
+
+two:
+  web: MyText
+  publications: MyText
+  pr: MyText
+  press_category_id: 1
+  title: MyString
+  additional_info: MyString
+  quote: MyText
+  link_address: MyString

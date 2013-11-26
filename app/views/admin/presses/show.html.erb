@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Web:</strong>
+  <%= @press.web %>
+</p>
+
+<p>
+  <strong>Publications:</strong>
+  <%= @press.publications %>
+</p>
+
+<p>
+  <strong>Pr:</strong>
+  <%= @press.pr %>
+</p>
+
+<p>
+  <strong>Press category:</strong>
+  <%= @press.press_category_id %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @press.title %>
+</p>
+
+<p>
+  <strong>Additional info:</strong>
+  <%= @press.additional_info %>
+</p>
+
+<p>
+  <strong>Quote:</strong>
+  <%= @press.quote %>
+</p>
+
+<p>
+  <strong>Link address:</strong>
+  <%= @press.link_address %>
+</p>
+
+<%= link_to 'Edit', edit_press_path(@press) %> |
+<%= link_to 'Back', presses_path %>

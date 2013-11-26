@@ -1,0 +1,15 @@
+<%= render 'admin/admin_sidebar' %>
+
+<div class="mainbar">
+	<%= render 'admin/admin_pagehead',:pagehead_title => "Edit Press Category : #{@press_category.name}" %>
+
+  <div class="matter">
+  	<div class="container-c">
+      <%= link_to 'Back to Press Categories', admin_press_categories_path, :class => "btn btn-warning" %>
+      <%= link_to 'New Type', new_admin_press_category_path, :class => "btn btn-success" %>
+
+      <div class="clearfix"></div>
+			<%= render 'form' %>
+		</div><!--/container-c-->
+	</div><!--/matter-->
+</div>

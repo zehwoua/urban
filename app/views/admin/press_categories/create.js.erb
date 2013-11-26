@@ -1,0 +1,5 @@
+$('#add_new_item_modal').modal('hide').remove();
+if($('#no_pc_text').length != 0){
+	$('#no_pc_text').remove();
+}
+$('.press_press_category').append('<label class="radio"><input class="radio_buttons optional" id="press_press_category_id_<%= @press_category.id %>" name="press[press_category_id]" type="radio" value="<%= @press_category.id %>"><%= @press_category.name %></label>');

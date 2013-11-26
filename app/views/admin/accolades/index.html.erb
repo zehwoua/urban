@@ -1,0 +1,67 @@
+<%= render 'admin/admin_sidebar' %>
+<div class="mainbar">
+  <%= render 'admin/admin_pagehead',:pagehead_title => 'Listing Accolades' %>
+  <div class="matter">
+    <div class="container-c">
+
+      <div class="clearfix"></div>
+      <div class="widget">
+
+        <%= render 'admin/admin_widgethead',:widgethead_title => 'Accolades',:new_path => 'accolades/new' %>
+
+        <div class="widget-content">
+          <% if @accolades.count != 0 %>
+            <table class="table table-striped table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th class="text-center">#</th>
+                  <th>Category</th>
+                  <th>Title</th>
+                  <th>Status</th>
+                  <th class="text-center">Control</th>
+                </tr>
+              </thead>
+              <% @i = 1 %>
+              
+              <% @accolades.each do |accolade| %>
+                <tbody>
+                  <tr>
+                    <td class="text-center"><%= @i %></td>
+                    
+                    <td><%= accolade.accolade_category.name if accolade.accolade_category.present? %></td>
+                    <td><%= accolade.title if accolade.title.present? %></td>
+                    <td><%= accolade.published ? raw("<span class='text-success'>Published</span>") : raw("<span class='text-warning'>Draft Saved</span>") %></td>
+                    
+                    <td class="text-center">
+                      <div class="btn-group">
+                        <%= link_to raw('<i class="icon-pencil"></i>'), edit_admin_accolade_path(accolade), :class => "btn btn-xs btn-warning" %>
+                        <%= link_to raw('<i class="icon-remove"></i>'), admin_accolade_path(accolade), :method => :delete, :confirm =>'Are you sure you want to delete?', :class => "btn btn-xs btn-danger" %>
+                      </div>
+                    </td>
+                  </tr>                                                                    
+                </tbody>
+                <% @i = @i+1 %>
+              <% end %>
+            </table>
+          <% else %>
+            <div class="col-lg-12">
+              <h5 class="text-warning">Currently there are no accolade. Would you like to <%= link_to "create one", new_admin_accolade_path %>?</h5>
+            </div>
+          <% end %>
+          <div class="widget-foot  text-center clearfix">
+            <ul class="pagination">
+              <li><a href="#">Prev</a></li>
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">Next</a></li>
+            </ul>
+          </div><!--/widget-foot-->
+        </div><!--/widget-content-->
+
+      </div><!--/widget-->
+    </div><!--/container-c-->
+  </div><!--/matter-->
+</div><!--/main-bar-->
+

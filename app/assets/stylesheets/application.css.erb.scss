@@ -1,0 +1,335 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "css-mixins";
+
+ 
+ @font-face {
+  font-family: 'Roboto';
+  src: url('Roboto-Light.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face { 
+ 	font-family: 'Roboto'; 
+ 	font-weight: bold;
+ 	src: url('Roboto-Bold.ttf');
+ }
+
+body{
+	font-family: 'Roboto';
+	color: #3a3b36;
+	font-size: 14px;
+}
+
+.bottom-pad{
+	margin-bottom: 25px;
+}
+.container-c{
+	width: 100%;
+	padding: 0 15px;
+}
+/************* SIDEBAR *****************/
+/* Sidebar */
+
+.sidebar{
+	width: 230px;
+	float: left;
+	display: block;
+	background:#f2f2f2;
+	color: #777;
+	position: relative;
+}
+
+.sidebar .sidebar-dropdown{
+	display: none;
+}
+
+.sidebar .sidebar-dropdown a{
+	color: #fff !important;  
+	box-shadow: inset 0px 0px 1px #000;
+	background-color: #343434;
+  background: -webkit-gradient(linear, left top, left bottom, from(#343434), to(#292929));
+  background: -webkit-linear-gradient(top, #343434, #292929);
+  background: -moz-linear-gradient(top, #343434, #292929);
+  background: -ms-linear-gradient(top, #343434, #292929);
+  background: -o-linear-gradient(top, #343434, #292929);
+  background: linear-gradient(top, #343434, #292929);	
+  padding:6px;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 11px;
+  display: block;
+  border-top: 2px solid #666;
+  border-bottom: 1px solid #333;
+  
+}
+
+.sidebar ul{
+	padding: 0px;
+	margin: 0px;
+}
+
+.sidebar ul li{
+	list-style-type: none;
+}
+
+.sidebar #nav { 
+  display: block; 
+  width:100%; 
+  margin:0 auto; 
+  position: absolute;
+  z-index: 60;
+}
+
+.sidebar #nav li i{
+	display:inline-block;
+	margin-right: 5px ;
+	background: #eee ;
+	color:#888;
+	width: 38px;
+	height: 38px;
+	line-height: 38px;
+	text-align: center;
+	border-radius: 30px;
+	border: 1px solid #ccc;
+}
+
+.sidebar  #nav li span i{
+	margin: 0px;
+	color: #999;
+	background: transparent !important;
+	border: 0px;
+}
+
+
+.sidebar #nav > li > a { 
+  display: block; 
+  padding: 10px 20px;
+  font-size: 13px;
+  color: #777;
+  text-decoration: none;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #fff;
+  background-color: #f8f8f8;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#f2f2f2));
+  background: -webkit-linear-gradient(top, #f9f9f9, #f2f2f2);
+  background: -moz-linear-gradient(top, #f9f9f9, #f2f2f2);
+  background: -ms-linear-gradient(top, #f9f9f9, #f2f2f2);
+  background: -o-linear-gradient(top, #f9f9f9, #f2f2f2);
+  background: linear-gradient(top, #f9f9f9, #f2f2f2);	
+  box-shadow: inset 0px 1px 1px #fff;
+}
+
+.sidebar #nav > li > a:hover, .sidebar #nav > li > a.open, .sidebar #nav > li > a.subdrop { 
+  color: #e9e9e9;
+  border-bottom: 1px solid #167cac;
+  border-top: 1px solid #2094ca;
+  background-color: #0993d3;
+  background: -webkit-gradient(linear, left top, left bottom, from(#1aaef3), to(#0993d3));
+  background: -webkit-linear-gradient(top, #1aaef3, #0993d3);
+  background: -moz-linear-gradient(top, #1aaef3, #0993d3);
+  background: -ms-linear-gradient(top, #1aaef3, #0993d3);
+  background: -o-linear-gradient(top, #1aaef3, #0993d3);
+  background: linear-gradient(top, #1aaef3, #0993d3);
+  box-shadow: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.sidebar #nav > li > a:hover i, .sidebar #nav > li > a.open i, .sidebar #nav > li > a.subdrop i{
+	color: #fff;
+  background-color: #167cac !important;
+  border: 1px solid #167cac;
+}
+
+.sidebar #nav > li > a:hover span i, .sidebar #nav > li > a.open span i, .sidebar #nav > li > a.subdrop span i{
+  color: #fff;
+  background: transparent !important;
+  border: 0px;
+}
+
+.sidebar #nav li ul { display: none; background: #efefef url("../img/cream.png") repeat; }
+
+.sidebar #nav li ul li a { 
+  display: block; 
+  background: none;
+  padding: 10px 0px;
+  padding-left: 30px;
+  text-decoration: none;
+  color: #777;
+  border-bottom: 1px solid #ddd;
+  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.1);
+}
+
+.sidebar #nav li ul li a:hover {
+  background: #eee;
+  border-bottom: 1px solid #ddd;
+}
+
+/************* MAINBAR *****************/
+
+.mainbar {
+	position: relative;
+	margin-left: 230px;
+	margin-right: 0px;
+	width: auto;
+	background: #eee url("main-back.png") repeat;
+	border-left: 1px solid #ccc;
+	z-index: 50;
+	min-height: 800px;
+
+	/* Page head */
+
+	.page-head {
+		background-color: #f8f8f8;
+		background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f2f2f2));
+		background: -webkit-linear-gradient(top, #f8f8f8, #f2f2f2);
+		background: -moz-linear-gradient(top, #f8f8f8, #f2f2f2);
+		background: -ms-linear-gradient(top, #f8f8f8, #f2f2f2);
+		background: -o-linear-gradient(top, #f8f8f8, #f2f2f2);
+		background: linear-gradient(top, #f8f8f8, #f2f2f2);
+		padding: 8px 20px;
+		border-bottom: 1px solid #fff;
+		box-shadow: inset 0px 1px 1px #fff;
+		h2{
+			font-weight: normal;
+			font-size: 20px;
+			margin: 12px 0;
+			color: #666;
+			text-shadow: 1px 1px 1px white;
+			i{
+				margin-right: 10px;
+			}
+		}
+	}
+	.matter{
+		border-top: 1px solid #ddd;
+		padding: 15px 0px;
+	}
+	.bread-crumb {
+		font-size: 11px;
+		margin-top: 10px;
+		color: #aaa;
+		a{
+			color: #666;
+		}
+	}
+}
+.widget {
+	border: 1px solid #c9c9c9;
+	border-radius: 3px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	background: #fafafa url('cream.png') repeat;
+	.widget-head{
+		background-color: #f8f8f8;
+		background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f2f2f2));
+		background: -webkit-linear-gradient(top, #f8f8f8, #f2f2f2);
+		background: -moz-linear-gradient(top, #f8f8f8, #f2f2f2);
+		background: -ms-linear-gradient(top, #f8f8f8, #f2f2f2);
+	  	background: -o-linear-gradient(top, #f8f8f8, #f2f2f2);
+		background: linear-gradient(top, #f8f8f8, #f2f2f2);	
+		border-top-right-radius: 3px;
+		border-top-left-radius: 3px;
+		text-shadow:0px 1px #fff;
+		border-bottom: 1px solid #ccc;
+		border-top: 1px solid #fff;
+		color: #666;
+		font-size: 13px;
+		font-weight: bold;
+	    padding: 8px 15px;
+	    .widget-icons{
+	    	i {
+				font-size: 14px;
+				margin: 0px 4px;
+			}
+			a {
+				color: #aaa;
+				text-decoration: none;
+				&:hover{
+					color:#bbb;
+				}
+			}
+	    } 
+	}
+	.widget-content{
+		.padd{
+			padding: 10px 0px;
+		}
+	}
+	p{
+		margin: 3px 0px 5px 0px !important;
+		line-height: 20px;
+	}
+	hr{
+		margin: 8px 0px;
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #fff;
+	}
+	.table{
+		margin: 0px;
+		width: 100%;
+		font-size: 13px;
+		color: rgb(102, 102, 102);
+		.btn{
+			font-size: 11px !important;
+		}
+	}
+	.table-bordered{
+		border-radius: 0px;
+		border: 0px;
+		th{
+			border-bottom: 1px solid #ddd !important;
+		}
+		td{
+			border-top: 0px !important;
+			border-bottom: 1px solid #ddd !important;
+			border-radius: 0px !important;
+		}
+		td:first-child,
+		th:first-child{
+			border-left: 0px;
+		}
+		thead:first-child tr:first-child > th:first-child,
+		tbody:first-child tr:first-child > td:first-child{
+			border-radius: 0px;
+		}
+	}
+	.widget-foot{
+		background-color: #f8f8f8;
+		background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f2f2f2));
+		background: -webkit-linear-gradient(top, #f8f8f8, #f2f2f2);
+		background: -moz-linear-gradient(top, #f8f8f8, #f2f2f2);
+		background: -ms-linear-gradient(top, #f8f8f8, #f2f2f2);
+		background: -o-linear-gradient(top, #f8f8f8, #f2f2f2);
+		background: linear-gradient(top, #f8f8f8, #f2f2f2);
+		border-bottom-right-radius: 3px;
+		border-bottom-left-radius: 3px;
+		text-shadow: 0px 1px #fff;
+		border-bottom: 1px solid #fff;
+		border-top: 1px solid #ccc;
+		padding: 8px 15px;
+		font-size: 12px;
+		color: #555;
+		box-shadow: inset 0px 1px 1px #fff;
+	}
+}
+.pagination{
+	margin: 10px 0;
+	li a {
+		color: #777;
+	}
+}

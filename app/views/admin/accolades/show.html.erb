@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Accolade category:</strong>
+  <%= @accolade.accolade_category_id %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @accolade.description %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @accolade.title %>
+</p>
+
+<p>
+  <strong>Additional info:</strong>
+  <%= @accolade.additional_info %>
+</p>
+
+<p>
+  <strong>Link address:</strong>
+  <%= @accolade.link_address %>
+</p>
+
+<p>
+  <strong>Published:</strong>
+  <%= @accolade.published %>
+</p>
+
+<%= link_to 'Edit', edit_accolade_path(@accolade) %> |
+<%= link_to 'Back', accolades_path %>

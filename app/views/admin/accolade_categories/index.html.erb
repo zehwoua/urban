@@ -1,0 +1,61 @@
+<%= render 'admin/admin_sidebar' %>
+<div class="mainbar">
+  <%= render 'admin/admin_pagehead',:pagehead_title => 'Listing Accolade Categories' %>
+  <div class="matter">
+    <div class="container-c">
+
+      <div class="clearfix"></div>
+      <div class="widget">
+
+        <%= render 'admin/admin_widgethead',:widgethead_title => 'Accolade Categories',:new_path => 'accolade_categories/new' %>
+
+        <div class="widget-content">
+          <% if @accolade_categories.count != 0 %>
+            <table class="table table-striped table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th class="text-center">#</th>
+                  <th>Accolade Category Name</th>
+                  <th class="text-center">Control</th>
+                </tr>
+              </thead>
+              <% @i = 1 %>
+              
+              <% @accolade_categories.each do |accolade_category| %>
+                <tbody>
+                  <tr>
+                    <td class="text-center"><%= @i %></td>
+                    <td><%= accolade_category.name if accolade_category.name.present? %></td>
+                    
+                    <td class="text-center">
+                      <div class="btn-group">
+                        <%= link_to raw('<i class="icon-pencil"></i>'), edit_admin_accolade_category_path(accolade_category), :class => "btn btn-xs btn-warning" %>
+                        <%= link_to raw('<i class="icon-remove"></i>'), admin_accolade_category_path(accolade_category), :method => :delete, :confirm =>'Are you sure you want to delete?', :class => "btn btn-xs btn-danger" %>
+                      </div>
+                    </td>
+                  </tr>                                                                    
+                </tbody>
+                <% @i = @i+1 %>
+              <% end %>
+            </table>
+          <% else %>
+            <div class="col-lg-12">
+              <h5 class="text-warning">Currently there are no accolade category. Would you like to <%= link_to "create one", new_admin_accolade_category_path %>?</h5>
+            </div>
+          <% end %>
+          <div class="widget-foot  text-center clearfix">
+            <ul class="pagination">
+              <li><a href="#">Prev</a></li>
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">Next</a></li>
+            </ul>
+          </div><!--/widget-foot-->
+        </div><!--/widget-content-->
+
+      </div><!--/widget-->
+    </div><!--/container-c-->
+  </div><!--/matter-->
+</div><!--/main-bar-->

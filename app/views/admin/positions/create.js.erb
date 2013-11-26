@@ -1,0 +1,5 @@
+$('#add_new_item_modal').modal('hide').remove();
+if($('#no_pc_text').length != 0){
+	$('#no_pc_text').remove();
+}
+$('.member_position').append('<label class="radio"><input class="radio_buttons optional" id="member_position_id_<%= @position.id %>" name="member[position_id]" type="radio" value="<%= @position.id %>"><%= @position.name %></label>');
